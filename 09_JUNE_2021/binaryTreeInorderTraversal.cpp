@@ -50,19 +50,3 @@ void Solution::helper(TreeNode *root, vector<int> &v) {
 	v.push_back(root->val);
 	this->helper(root->right, v);	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

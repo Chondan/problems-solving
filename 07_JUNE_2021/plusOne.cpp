@@ -67,24 +67,3 @@ vector<int> Solution::plusOne2(vector<int> &digits) {
 	digits.push_back(0);
 	return digits;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
