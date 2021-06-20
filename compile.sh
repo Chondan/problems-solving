@@ -1,3 +1,5 @@
+#!/bin/bash
+
 fileName=$1
 fileNameLen=${#fileName}
 lastPos=`expr $fileNameLen - 4`
