@@ -41,5 +41,6 @@ bool Solution::repeatedSubstringPattern(string s) {
 // 2. Using KMP algorithm
 bool Solution::repeatedSubstringPattern2(string s) {
 
+	// WIP
 	return true;
 }
