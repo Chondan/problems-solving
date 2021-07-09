@@ -10,6 +10,10 @@ template <typename T>
 void displayVector(vector<T> input);
 vector<string> split(string s, string delim);
 
+// Binary Tree
+struct TreeNode;
+void indorder(TreeNode *root);
+
 // ---- METHODS IMPLEMENTATION ----
 template <typename T>
 void displayVector(vector<T> input) {
@@ -32,5 +36,21 @@ vector<string> split(string s, string delim) {
     return result;
 }
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
+void indorder(TreeNode *root) {
+    if (!root) return;
+
+    indorder(root->left);
+    cout << root->val << " ";
+    indorder(root->right);
+}
 
 #endif
