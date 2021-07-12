@@ -9,6 +9,8 @@ using namespace std;
 template <typename T>
 void displayVector(vector<T> input);
 vector<string> split(string s, string delim);
+int charToInt(char c);
+char intToChar(int n);
 
 // Binary Tree
 struct TreeNode;
@@ -51,6 +53,14 @@ void indorder(TreeNode *root) {
     indorder(root->left);
     cout << root->val << " ";
     indorder(root->right);
+}
+
+int charToInt(char c) {
+    return c - '0';
+}
+
+char intToChar(int n) {
+    return n + '0';
 }
 
 #endif
