@@ -8,13 +8,18 @@ using namespace std;
 // ---- METHODS DEFINITION ----
 template <typename T>
 void displayVector(vector<T> input);
+
+// String
 vector<string> split(string s, string delim);
-int charToInt(char c);
-char intToChar(int n);
 
 // Binary Tree
 struct TreeNode;
 void indorder(TreeNode *root);
+
+// Char
+int charToInt(char c);
+char intToChar(int n);
+bool isUpperCase(char c);
 
 // ---- METHODS IMPLEMENTATION ----
 template <typename T>
@@ -61,6 +66,12 @@ int charToInt(char c) {
 
 char intToChar(int n) {
     return n + '0';
+}
+
+bool isUpperCase(char c) {
+    int ascii = c;
+    if (ascii < 65 || ascii > 90) return false;
+    return true;
 }
 
 #endif
