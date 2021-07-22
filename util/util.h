@@ -9,6 +9,9 @@ using namespace std;
 template <typename T>
 void displayVector(vector<T> input);
 
+template <typename T>
+void displayVectorVector(vector<vector<T>> input);
+
 // String
 vector<string> split(string s, string delim);
 
@@ -28,6 +31,16 @@ void displayVector(vector<T> input) {
         cout << i << " ";
     }
     cout << endl;
+}
+
+template <typename T>
+void displayVectorVector(vector<vector<T>> input) {
+    for (vector<T> outer: input) {
+        for (T inner: outer) {
+            cout << inner << " ";
+        }
+        cout << endl;
+    }
 }
 
 vector<string> split(string s, string delim) {
