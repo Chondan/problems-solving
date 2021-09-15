@@ -2,5 +2,5 @@
 
 ## Contents
 
-- [dynamic programming](./md/dynamic-programming.md)
-- [todo](./md/todo.md)
+- [Dynamic programming](./md/dynamic-programming.md)
+- [Todo](./md/todo.md)
