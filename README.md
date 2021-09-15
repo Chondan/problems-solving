@@ -1,4 +1,4 @@
-# PROBLEMS SOLVING
+# Problems solving
 
 ## Contents
 
