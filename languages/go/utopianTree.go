@@ -17,7 +17,6 @@ func utopianTree(n int32) int32 {
 	return 1
     }
 
-
     if n % 2 == 0 {
 	return 1 + utopianTree(n - 1)
     } else {
