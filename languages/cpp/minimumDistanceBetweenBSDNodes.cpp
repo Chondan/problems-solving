@@ -10,12 +10,15 @@ class Solution {
 public:
     int minDiffInBST(TreeNode *root);
     void generateNodeValues(TreeNode *root, vector<int> &nodeValues);
+    // Smarte way
+    int minDiffInBST2(TreeNode *root);
+    void helper(TreeNode *root, int &minDiff, int &prevNodeValue);
 };
 
 int main(void) {
     Solution solution;
     TreeNode *root = new TreeNode(4, new TreeNode(2, new TreeNode(1), new TreeNode(3)), new TreeNode(6));
-    int ans = solution.minDiffInBST(root);
+    int ans = solution.minDiffInBST2(root);
     cout << "ans: " << ans << endl;
 }
 
@@ -46,4 +49,22 @@ void Solution::generateNodeValues(TreeNode *root, vector<int> &nodeValues) {
     nodeValues.push_back(nodeValue);
 
     this->generateNodeValues(root->right, nodeValues);
+}
+
+int Solution::minDiffInBST2(TreeNode *root) {
+    int minDiff = INT_MAX, prevNodeValue = INT_MAX;
+    helper(root, minDiff, prevNodeValue);
+    return minDiff;
+}
+
+void Solution::helper(TreeNode *root, int &minDiff, int &prevNodeValue) {
+    if (!root) return;
+
+    this->helper(root->left, minDiff, prevNodeValue);
+
+    // Compate parent with its child
+    minDiff = min(minDiff, abs(prevNodeValue - root->val));
+    prevNodeValue = root->val;
+
+    this->helper(root->right, minDiff, prevNodeValue);
 }
