@@ -25,9 +25,8 @@ int Solution::minDiffInBST(TreeNode *root) {
     // To make sure that the number of elements is >= 3 to allow us to compare 2 contigous value (both left and right)
     nodeValues.push_back(INT_MAX);
 
-    // Sort min to max and then compare 2 contiguous value
+    // Compare 2 contiguous value
     int minDiff = INT_MAX - 1;
-    sort(nodeValues.begin(), nodeValues.end());
     for (int i = 1; i < nodeValues.size() - 1; i++) {
 	int contigousDiffLeft = abs(nodeValues[i - 1] - nodeValues[i]);
 	int contigousDiffRight = abs(nodeValues[i] - nodeValues[i + 1]);
