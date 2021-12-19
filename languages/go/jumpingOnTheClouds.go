@@ -2,41 +2,40 @@ package main
 import ("fmt")
 
 func main() {
-    var (
-	c = []int32{0,0,1,0,0,1,1,0}
-	k int32 = 2
-    )
-    var ans int32 = jumpingOnClouds(c, k)
+    var c = []int32{0,0,1,0,0,1,0}
+    var ans int32 = jumpingOnClouds(c)
     fmt.Println("ans:", ans)
 }
 
-func isThundercloud(cloudNumber int32) bool {
-    return cloudNumber == 1
-}
+/* 
+- The player can jump on any cumulus cloud having a number that is equal
+to the number of the current cloud plus 1 or 2.
+- The player must avoid the thunderheads.
 
-func getRemainingEnergy(c []int32, jumpIndex int32, energy int32) int32 {
-    if isThundercloud(c[jumpIndex]) {
-	return energy - 3
-    } else {
-	return energy - 1
-    }
-}
+Analysis -> clouds = {0,0,1,0,0,1,0}
 
-func jumpingOnClouds(c []int32, k int32) int32 {
+starting from index 0: 2 choices to jump -> 1 step or 2 steps
+- select the furthest -> go 2 steps if clouds[curIndex + 2] != 1 otherwise go 1
+
+*/
+func jumpingOnClouds(c []int32) int32 {
+    const THUNDERHEADS int32 = 1
     var (
-	energy int32 = 100
-	jumpIndex int32 = 0
-	lenCloud int32 = int32(len(c))
+	countJump int32 = 0
+	curIndex int32 = 0
+	clouds []int32 = c
     )
 
-    // First jump
-    energy = getRemainingEnergy(c, jumpIndex, energy)
-    jumpIndex = (jumpIndex + k) % lenCloud
-
-    for ; jumpIndex % lenCloud != 0; {
-	energy = getRemainingEnergy(c, jumpIndex, energy)
-	jumpIndex = (jumpIndex + k) % lenCloud
+    for ; curIndex != int32(len(clouds)) - 1; {
+	var isOutOfIndex bool = curIndex + 2 >= int32(len(clouds))
+	var canGoTwoSteps bool = !isOutOfIndex && clouds[curIndex + 2] != THUNDERHEADS;
+	if canGoTwoSteps {
+	    curIndex += 2
+	} else {
+	    curIndex += 1
+	}
+	countJump += 1
     }
 
-    return energy
+    return countJump
 }
